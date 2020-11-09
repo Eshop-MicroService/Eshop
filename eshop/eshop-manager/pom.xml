@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eshop</artifactId>
+        <groupId>com.microservice</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>eshop-manager</artifactId>
+    <description>
+        通用处理层：预处理返回结果及转化异常信息，缓存方案及中间件通用处理，与数据访问层交互（多个数据访问层）
+        可以直接向网关层返回处理后的来自第三方的JSON数据
+    </description>
+
+</project>

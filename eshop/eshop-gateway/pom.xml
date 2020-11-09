@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eshop</artifactId>
+        <groupId>com.microservice</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>eshop-gateway</artifactId>
+    <packaging>pom</packaging>
+    <description>
+        网关层：Gateway微服务网关 便于外部调用服务
+        可以接收controller请求处理层返回的数据，也可以直接接收manager通用处理层返回的第三方业务数据
+    </description>
+    <modules>
+        <module>eshop-gateway_user</module>
+        <module>eshop-gateway_merchant</module>
+    </modules>
+
+</project>
