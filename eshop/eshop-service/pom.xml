@@ -21,4 +21,12 @@
         <module>eshop-service_goods</module>
         <module>eshop-service_orders</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microservice</groupId>
+            <artifactId>eshop-common_db</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -10,8 +10,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>eshop-APIserver</artifactId>
+    <packaging>pom</packaging>
     <description>
         各Service方法封装暴露接口，便于服务间互相调用（Feign）
     </description>
+    <modules>
+        <module>eshop-service-goods-api</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microservice</groupId>
+            <artifactId>eshop-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
