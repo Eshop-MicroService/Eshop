@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * 商品组合实体类
+ * List<Sku>
+ * Spu
  */
 @ApiModel(description = "商品信息")
 public class Goods implements Serializable {
