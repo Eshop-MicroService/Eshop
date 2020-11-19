@@ -10,11 +10,11 @@
         <module>eshop-common</module>
         <module>eshop-common_db</module>
         <module>eshop-controller</module>
-        <module>ehop-dataaccess</module>
         <module>eshop-gateway</module>
         <module>eshop-manager</module>
         <module>eshop-oAuth</module>
         <module>eshop-service</module>
+        <module>eshop-repository</module>
 
     </modules>
     <parent>

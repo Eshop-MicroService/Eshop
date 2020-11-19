@@ -4,8 +4,8 @@ spring:
   application:
     name: goods
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/eshop_goods
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1c83y7r29088yj6go.mysql.rds.aliyuncs.com:3306/goods_service?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 12345678
 eureka:
@@ -17,3 +17,8 @@ eureka:
 feign:
   hystrix:
     enabled: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.eshop.goods.pojo
