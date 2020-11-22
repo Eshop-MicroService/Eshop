@@ -1,4 +1,4 @@
-package com.eshop.service;
+package com.eshop.goods.service;
 
 import com.eshop.goods.pojo.Brand;
 

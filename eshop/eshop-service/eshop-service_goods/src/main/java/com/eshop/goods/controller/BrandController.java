@@ -1,7 +1,8 @@
-package com.eshop.controller;
+package com.eshop.goods.controller;
+
 
 import com.eshop.goods.pojo.Brand;
-import com.eshop.service.BrandService;
+import com.eshop.goods.service.BrandService;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;

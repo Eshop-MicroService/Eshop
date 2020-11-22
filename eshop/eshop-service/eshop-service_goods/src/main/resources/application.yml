@@ -22,3 +22,6 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.eshop.goods.pojo
+
+
+

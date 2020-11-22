@@ -1,8 +1,8 @@
-package com.eshop.service.impl;
+package com.eshop.goods.service.impl;
 
+import com.eshop.goods.mapper.BrandMapper;
 import com.eshop.goods.pojo.Brand;
-import com.eshop.mapper.BrandMapper;
-import com.eshop.service.BrandService;
+import com.eshop.goods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
