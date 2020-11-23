@@ -15,6 +15,7 @@
         <module>eshop-oAuth</module>
         <module>eshop-service</module>
         <module>eshop-repository</module>
+        <module>eshop-swagger</module>
 
     </modules>
     <parent>

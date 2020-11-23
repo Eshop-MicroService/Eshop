@@ -5,6 +5,8 @@ import com.eshop.goods.service.SpuService;
 import com.netflix.discovery.converters.Auto;
 import entity.Result;
 import entity.StatusCode;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +45,7 @@ public class SpuController {
      * @return
      */
     @PutMapping("/put/many")
+    @ApiOperation("下架操作")
     public Result putMany(@RequestBody Long[] ids){
         spuService.putMany(ids);
         return new Result(true,StatusCode.OK,"success!");

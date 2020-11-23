@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: swagger
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1c83y7r29088yj6go.mysql.rds.aliyuncs.com:3306/goods_service?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 12345678
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    register-with-eureka: false #是否将自己注册到eureka中
+    fetch-registry: false       #是否从eureka中获取信息
+
+
+
