@@ -1,34 +1,34 @@
-package com.eshop.controller;
-
+package com.eshop.goods.controller;
 import com.eshop.goods.pojo.Brand;
-import com.eshop.service.BrandService;
+import com.eshop.goods.service.BrandService;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
+/****
+ * @Author:admin
+ * @Description:
+ * @Date 2019/6/14 0:18
+ *****/
 
 @RestController
 @RequestMapping(value = "/brand")
 @CrossOrigin
-<<<<<<< HEAD
-
-
-=======
-@Api
->>>>>>> 3b92b2198a74ce44a9224e92e3334ddfeaa75b3e
 public class BrandController {
 
     @Autowired
     private BrandService brandService;
 
-<<<<<<< HEAD
     /***
      * Brand分页条件搜索实现
+     * @param brand
+     * @param page
+     * @param size
+     * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@RequestBody(required = false)  Brand brand, @PathVariable  int page, @PathVariable  int size){
@@ -52,6 +52,8 @@ public class BrandController {
 
     /***
      * 多条件搜索品牌数据
+     * @param brand
+     * @return
      */
     @PostMapping(value = "/search" )
     public Result<List<Brand>> findList(@RequestBody(required = false)  Brand brand){
@@ -62,8 +64,10 @@ public class BrandController {
 
     /***
      * 根据ID删除品牌数据
+     * @param id
+     * @return
      */
-    @DeleteMapping(value = "/delete/{id}" )
+    @DeleteMapping(value = "/{id}" )
     public Result delete(@PathVariable Integer id){
         //调用BrandService实现根据主键删除
         brandService.delete(id);
@@ -72,8 +76,11 @@ public class BrandController {
 
     /***
      * 修改Brand数据
+     * @param brand
+     * @param id
+     * @return
      */
-    @PutMapping(value="/edit/{id}")
+    @PutMapping(value="/{id}")
     public Result update(@RequestBody  Brand brand,@PathVariable Integer id){
         //设置主键值
         brand.setId(id);
@@ -84,8 +91,10 @@ public class BrandController {
 
     /***
      * 新增Brand数据
+     * @param brand
+     * @return
      */
-    @PostMapping("/add")
+    @PostMapping
     public Result add(@RequestBody   Brand brand){
         //调用BrandService实现添加Brand
         brandService.add(brand);
@@ -94,6 +103,8 @@ public class BrandController {
 
     /***
      * 根据ID查询Brand数据
+     * @param id
+     * @return
      */
     @GetMapping("/{id}")
     public Result<Brand> findById(@PathVariable Integer id){
@@ -104,16 +115,10 @@ public class BrandController {
 
     /***
      * 查询Brand全部数据
+     * @return
      */
-    @GetMapping("/allbrand")
+    @GetMapping
     public Result<List<Brand>> findAll(){
-        try {
-            System.out.println("aaaaa=====");
-            Thread.sleep(3000);
-            System.out.println("bbbb=====");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //调用BrandService实现查询所有Brand
         List<Brand> list = brandService.findAll();
         return new Result<List<Brand>>(true, StatusCode.OK,"查询成功",list) ;
@@ -130,12 +135,5 @@ public class BrandController {
 
         return new Result<List<Brand>>(true,StatusCode.OK,"查询品牌列表成功",brandList);
 
-=======
-    @GetMapping
-    @ApiOperation(value = "查询品牌", notes = "查询品牌")
-    public Result<List<Brand>> findAll() {
-        List<Brand> brands = brandService.findAll();
-        return new Result<List<Brand>>(true, StatusCode.OK,"success!",brands);
->>>>>>> 3b92b2198a74ce44a9224e92e3334ddfeaa75b3e
     }
 }

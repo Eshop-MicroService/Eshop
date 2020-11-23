@@ -1,17 +1,20 @@
-package com.eshop.service.impl;
-
+package com.eshop.goods.service.impl;
+import com.eshop.goods.mapper.BrandMapper;
 import com.eshop.goods.pojo.Brand;
-import com.eshop.mapper.BrandMapper;
-import com.eshop.service.BrandService;
+import com.eshop.goods.service.BrandService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
-
 import java.util.List;
 
+/****
+ * @Author:admin
+ * @Description:Brand业务层接口实现类
+ * @Date 2019/6/14 0:16
+ *****/
 @Service
 public class BrandServiceImpl implements BrandService {
 
@@ -21,6 +24,10 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * Brand条件+分页查询
+     * @param brand 查询条件
+     * @param page 页码
+     * @param size 页大小
+     * @return 分页结果
      */
     @Override
     public PageInfo<Brand> findPage(Brand brand, int page, int size){
@@ -34,6 +41,9 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * Brand分页查询
+     * @param page
+     * @param size
+     * @return
      */
     @Override
     public PageInfo<Brand> findPage(int page, int size){
@@ -45,6 +55,8 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * Brand条件查询
+     * @param brand
+     * @return
      */
     @Override
     public List<Brand> findList(Brand brand){
@@ -57,6 +69,8 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * Brand构建查询对象
+     * @param brand
+     * @return
      */
     public Example createExample(Brand brand){
         Example example=new Example(Brand.class);
@@ -87,6 +101,8 @@ public class BrandServiceImpl implements BrandService {
     }
 
     /**
+     * 删除
+     * @param id
      */
     @Override
     public void delete(Integer id){
@@ -94,6 +110,8 @@ public class BrandServiceImpl implements BrandService {
     }
 
     /**
+     * 修改Brand
+     * @param brand
      */
     @Override
     public void update(Brand brand){
@@ -101,6 +119,8 @@ public class BrandServiceImpl implements BrandService {
     }
 
     /**
+     * 增加Brand
+     * @param brand
      */
     @Override
     public void add(Brand brand){
@@ -109,6 +129,8 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 根据ID查询Brand
+     * @param id
+     * @return
      */
     @Override
     public Brand findById(Integer id){
@@ -117,6 +139,7 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 查询Brand全部数据
+     * @return
      */
     @Override
     public List<Brand> findAll() {
@@ -125,7 +148,9 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public List<Brand> findByCategory(Integer id) {
-
+        //两种方案:
+        //1. 自己写sql语句直接执行  推荐
+        //2. 调用通用的mapper的方法 一个个表查询
 
         return brandMapper.findByCategory(id);
     }
