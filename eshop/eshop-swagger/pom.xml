@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>com.microservice</groupId>
-            <artifactId>eshop-service</artifactId>
+            <artifactId>eshop-service_goods</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -27,12 +27,7 @@
             <artifactId>eshop-APIserver</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.microservice</groupId>
-            <artifactId>eshop-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
 </project>

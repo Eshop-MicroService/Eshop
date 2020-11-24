@@ -9,12 +9,11 @@
         <module>eshop-cloud</module>
         <module>eshop-common</module>
         <module>eshop-common_db</module>
-        <module>eshop-controller</module>
+
         <module>eshop-gateway</module>
         <module>eshop-manager</module>
         <module>eshop-oAuth</module>
         <module>eshop-service</module>
-        <module>eshop-repository</module>
         <module>eshop-swagger</module>
 
     </modules>

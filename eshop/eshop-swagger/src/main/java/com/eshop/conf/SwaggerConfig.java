@@ -1,4 +1,4 @@
-package com.eshop.swagger.conf;
+package com.eshop.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,13 +13,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = {"com.eshop"})
+@ComponentScan(basePackages = {"com.eshop.goods"})
 public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.eshop"))
+                .apis(RequestHandlerSelectors.basePackage("com.eshop.goods"))
                 .paths(PathSelectors.any())
                 .build();
     }

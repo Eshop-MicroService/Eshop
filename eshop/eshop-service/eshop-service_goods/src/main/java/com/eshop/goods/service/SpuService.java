@@ -38,17 +38,8 @@ public interface SpuService {
      */
     Goods findGoodsById(Long id);
 
-    /***
-     * 商品增加
-     */
-    void saveGoods(Goods goods);
-    /***
-     * Spu多条件分页查询
-     * @param spu
-     * @param page
-     * @param size
-     * @return
-     */
+
+
     PageInfo<Spu> findPage(Spu spu, int page, int size);
 
     /***
@@ -98,19 +89,11 @@ public interface SpuService {
     List<Spu> findAll();
 
     /**
-     * 添加商品(SPU+ SKUlIST)
-     * @param goods   update  add
+     * 添加商品
+     * @param goods
      */
-    void save(Goods goods);
+    void saveGoods(Goods goods);
 
-
-    void auditSpu(Long id);
-
-    /**
-     * 下架
-     * @param id
-     */
-    void pullSpu(Long id);
 
     void logicDeleteSpu(Long id);
 

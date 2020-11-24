@@ -1,4 +1,5 @@
 package com.eshop.goods.service.impl;
+
 import com.eshop.goods.mapper.BrandMapper;
 import com.eshop.goods.pojo.Brand;
 import com.eshop.goods.service.BrandService;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
+
+
 import java.util.List;
 
 /****
@@ -141,10 +144,12 @@ public class BrandServiceImpl implements BrandService {
      * 查询Brand全部数据
      * @return
      */
+
     @Override
     public List<Brand> findAll() {
         return brandMapper.selectAll();
     }
+
 
     @Override
     public List<Brand> findByCategory(Integer id) {
@@ -154,5 +159,5 @@ public class BrandServiceImpl implements BrandService {
 
         return brandMapper.findByCategory(id);
     }
-}
 
+}

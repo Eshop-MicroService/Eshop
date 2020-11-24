@@ -1,4 +1,5 @@
 package com.eshop.goods.service;
+
 import com.eshop.goods.pojo.Brand;
 import com.github.pagehelper.PageInfo;
 import java.util.List;
@@ -53,6 +54,7 @@ public interface BrandService {
 
     /**
      * 根据ID查询Brand
+     *
      * @param id
      * @return
      */
@@ -66,4 +68,5 @@ public interface BrandService {
 
 
     List<Brand> findByCategory(Integer id);
+
 }

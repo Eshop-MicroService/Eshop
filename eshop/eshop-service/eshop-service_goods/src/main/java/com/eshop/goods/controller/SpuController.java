@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/spu")
 @CrossOrigin
+@Api
 public class SpuController {
 
     @Autowired
@@ -130,7 +132,7 @@ public class SpuController {
      */
     @PostMapping("/save")
     public Result save(@RequestBody Goods goods){
-        spuService.save(goods);
+        spuService.saveGoods(goods);
         return new Result(true,StatusCode.OK,"保存商品成功",null);
     }
 
@@ -149,14 +151,14 @@ public class SpuController {
      * @return
      */
     @PutMapping("/audit/{id}")
-    public Result auditSpu(@PathVariable(name="id")Long id){
-        spuService.auditSpu(id);
+    public Result audit(@PathVariable(name="id")Long id){
+        spuService.audit(id);
         return new Result(true,StatusCode.OK,"审核通过");
     }
 
     @PutMapping("/pull/{id}")
-    public Result pullSpu(@PathVariable(name="id")Long id){
-        spuService.pullSpu(id);
+    public Result pull(@PathVariable(name="id")Long id){
+        spuService.pull(id);
         return new Result(true,StatusCode.OK,"下架成功");
     }
 

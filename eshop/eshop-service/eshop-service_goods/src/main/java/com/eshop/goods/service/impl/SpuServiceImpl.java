@@ -11,7 +11,7 @@ import com.eshop.goods.service.SpuService;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import entity.IdWorker;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -46,7 +46,7 @@ public class SpuServiceImpl implements SpuService {
     private SkuMapper skuMapper;
 
 
-    private IdWorker idWorker;
+
 
     /***
      * 商品审核
@@ -375,7 +375,6 @@ public class SpuServiceImpl implements SpuService {
 
     /**
      * 删除
-     *
      * @param id
      */
     @Override
@@ -392,7 +391,6 @@ public class SpuServiceImpl implements SpuService {
 
     /**
      * 修改Spu
-     *
      * @param spu
      */
     @Override
@@ -402,7 +400,6 @@ public class SpuServiceImpl implements SpuService {
 
     /**
      * 增加Spu
-     *
      * @param spu
      */
     @Override
@@ -423,7 +420,6 @@ public class SpuServiceImpl implements SpuService {
 
     /**
      * 查询Spu全部数据
-     *
      * @return
      */
     @Override
@@ -432,103 +428,8 @@ public class SpuServiceImpl implements SpuService {
     }
 
 
-    @Override
-    public void save(Goods goods) {
-
-        Spu spu = goods.getSpu();
-        if (goods.getSpu().getId() == null) {
-            //新增
-            //1.先获取SPU的数据  添加到表中 spu表中
-            spu.setId(idWorker.nextId());//生成主键 要唯一 雪花算法.
-            spuMapper.insertSelective(spu);
-
-            //新增SKU
-        } else {
-            //修改
-            spuMapper.updateByPrimaryKeySelective(spu);
-
-            //1.先删除spu对应的原来的SKU的类别
-
-            //delete from tb_sku where spu_id = ?
-            Sku condition = new Sku();
-            condition.setSpuId(spu.getId());
-            skuMapper.delete(condition);
-            //2.再新增
-
-        }
 
 
-        //2.获取SKU 的列表数据  循环遍历添加掉sku表中
-        List<Sku> skuList = goods.getSkuList();
-        for (Sku sku : skuList) {
-            // id 要生成
-            sku.setId(idWorker.nextId());
-            // name 要生成 (spu的名称+ " "+ 规格的选项的值 )  //  spu的名称: iphonex  规格的数据: spec:{ 颜色:红色,内存大小:16G}
-            // 先获取规格的数据
-            String spec = sku.getSpec(); //{ 颜色:红色,内存大小:16G}
-            Map<String, String> map = JSON.parseObject(spec, Map.class);
-            // 转成map对象  key:颜色  value:红色
-            String titile = spu.getName();
-            for (String key : map.keySet()) {
-                // 获取SPU的名称 拼接 即可
-                titile += " " + map.get(key);
-            }
-            sku.setName(titile);
-
-            // create_time
-            sku.setCreateTime(new Date());
-
-            // update_time
-            sku.setUpdateTime(sku.getCreateTime());
-
-            // spu_id
-            sku.setSpuId(spu.getId());
-
-            // category_id 3级分类的ID
-            Integer category3Id = spu.getCategory3Id();
-            sku.setCategoryId(category3Id);
-            // category_name 3级分类的名称
-            Category category = categoryMapper.selectByPrimaryKey(category3Id);
-            sku.setCategoryName(category.getName());
-            // brand_name
-            Brand brand = brandMapper.selectByPrimaryKey(spu.getBrandId());
-            sku.setBrandName(brand.getName());
-            skuMapper.insertSelective(sku);
-        }
-    }
-
-
-    @Override
-    public void auditSpu(Long id) {
-        //update tb_spu set status=1,is_marketable=1 where is_delete=0 and id = ?
-
-        //先判断是否已经被删除
-        Spu spu = spuMapper.selectByPrimaryKey(id);
-        if (spu == null || spu.getIsDelete().equals("1")) {//已经被删除了 或者商品部存在
-            throw new RuntimeException("商品不存在或者已经删除");
-        }
-        //审核商品
-        spu.setStatus("1");//已经审核
-        spu.setIsMarketable("1");//自动上架
-        spuMapper.updateByPrimaryKeySelective(spu);
-    }
-
-    @Override
-    public void pullSpu(Long id) {
-        //update tb_spu set is_marketable=0 where is_delete=0 and id = ? and is_marketable=1 and status=1
-        Spu spu = spuMapper.selectByPrimaryKey(id);
-        if (spu == null || spu.getIsDelete().equals("1")) {//已经被删除了 或者商品部存在
-            throw new RuntimeException("商品不存在或者已经删除");
-        }
-
-        if(!spu.getStatus().equals("1") || !spu.getIsMarketable().equals("1")){
-            throw new RuntimeException("商品必须要审核或者商品必须要是上架的状态");
-        }
-
-        spu.setIsMarketable("0");
-        spuMapper.updateByPrimaryKeySelective(spu);
-
-    }
 
     @Override
     public void logicDeleteSpu(Long id) {
