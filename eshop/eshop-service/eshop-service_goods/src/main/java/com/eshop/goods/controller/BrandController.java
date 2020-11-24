@@ -24,11 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/****
- * @Author:admin
- * @Description:
- * @Date 2019/6/14 0:18
- *****/
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/brand")
@@ -42,10 +38,6 @@ public class BrandController {
 
     /***
      * Brand分页条件搜索实现
-     * @param brand
-     * @param page
-     * @param size
-     * @return
      */
     @PostMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@RequestBody(required = false) Brand brand, @PathVariable int page, @PathVariable int size) {
@@ -69,8 +61,6 @@ public class BrandController {
 
     /***
      * 多条件搜索品牌数据
-     * @param brand
-     * @return
      */
     @PostMapping(value = "/search")
     public Result<List<Brand>> findList(@RequestBody(required = false) Brand brand) {
@@ -81,10 +71,8 @@ public class BrandController {
 
     /***
      * 根据ID删除品牌数据
-     * @param id
-     * @return
      */
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public Result delete(@PathVariable Integer id) {
         //调用BrandService实现根据主键删除
         brandService.delete(id);
@@ -93,11 +81,8 @@ public class BrandController {
 
     /***
      * 修改Brand数据
-     * @param brand
-     * @param id
-     * @return
      */
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/put/{id}")
     public Result update(@RequestBody Brand brand, @PathVariable Integer id) {
         //设置主键值
         brand.setId(id);
@@ -108,11 +93,9 @@ public class BrandController {
 
     /***
      * 新增Brand数据
-     * @param brand
-     * @return
      */
-    @PostMapping
-    public Result add(@RequestBody Brand brand) {
+    @PostMapping("/add")
+    public Result add(@RequestBody   Brand brand){
         //调用BrandService实现添加Brand
         brandService.add(brand);
         return new Result(true, StatusCode.OK, "添加成功");
@@ -120,8 +103,6 @@ public class BrandController {
 
     /***
      * 根据ID查询Brand数据
-     * @param id
-     * @return
      */
     @GetMapping("/{id}")
     public Result<Brand> findById(@PathVariable Integer id) {
@@ -132,7 +113,6 @@ public class BrandController {
 
     /***
      * 查询Brand全部数据
-     * @return
      */
     @GetMapping
     public Result<List<Brand>> findAll() {
@@ -152,5 +132,4 @@ public class BrandController {
         return new Result<List<Brand>>(true, StatusCode.OK, "查询品牌列表成功", brandList);
 
     }
-
 }
