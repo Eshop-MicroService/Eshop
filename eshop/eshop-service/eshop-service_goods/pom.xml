@@ -17,5 +17,10 @@
             <artifactId>eshop-service-goods-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <!-- logback condition 需要用到 -->
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+        </dependency>
     </dependencies>
 </project>
