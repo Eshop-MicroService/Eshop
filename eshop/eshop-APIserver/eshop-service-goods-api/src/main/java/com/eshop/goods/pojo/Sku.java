@@ -14,7 +14,6 @@ import java.util.Date;
 /****
  * @Author:admin
  * @Description:Sku构建
- * @Date 2019/6/14 19:13
  *****/
 @ApiModel(description = "Sku",value = "Sku")
 @Table(name="tb_sku")
