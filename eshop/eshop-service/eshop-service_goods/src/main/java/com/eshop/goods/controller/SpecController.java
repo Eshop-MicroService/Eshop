@@ -12,7 +12,6 @@ import java.util.List;
 /****
  * @Author:admin
  * @Description:
- * @Date 2019/6/14 0:18
  *****/
 
 @RestController
@@ -127,7 +126,6 @@ public class SpecController {
 
     /**
      * 根据商品分类的ID 查询该分类对应的 规格的列表
-     *
      */
 
 

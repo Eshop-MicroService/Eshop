@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>eshop-service_orders</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.microservice</groupId>
+            <artifactId>eshop-service-goods-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

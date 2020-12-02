@@ -9,7 +9,6 @@ import java.io.Serializable;
 /****
  * @Author:admin
  * @Description:Brand构建
- * @Date 2019/6/14 19:13
  *****/
 @ApiModel(description = "Brand",value = "Brand")
 @Table(name="tb_brand")
