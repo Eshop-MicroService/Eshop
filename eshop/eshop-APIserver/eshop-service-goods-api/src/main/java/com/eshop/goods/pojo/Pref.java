@@ -10,6 +10,7 @@ import java.util.Date;
 /****
  * @Author:admin
  * @Description:Pref构建
+ * @Date 2019/6/14 19:13
  *****/
 @ApiModel(description = "Pref",value = "Pref")
 @Table(name="tb_pref")
