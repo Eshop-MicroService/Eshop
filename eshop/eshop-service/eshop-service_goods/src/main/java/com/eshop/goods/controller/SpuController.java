@@ -7,7 +7,6 @@ import entity.Result;
 import entity.StatusCode;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.List;
 /****
  * @Author:admin
  * @Description:
+ * @Date 2019/6/14 0:18
  *****/
 
 @RestController
@@ -47,7 +47,7 @@ public class SpuController {
      * @return
      */
     @GetMapping(value = "/search/{page}/{size}" )
-    public Result<PageInfo> findPage(@PathVariable int page, @PathVariable  int size){
+    public Result<PageInfo> findPage(@PathVariable  int page, @PathVariable  int size){
         //调用SpuService实现分页查询Spu
         PageInfo<Spu> pageInfo = spuService.findPage(page, size);
         return new Result<PageInfo>(true,StatusCode.OK,"查询成功",pageInfo);

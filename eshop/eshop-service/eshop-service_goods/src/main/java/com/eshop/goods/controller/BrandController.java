@@ -11,7 +11,6 @@ import entity.StatusCode;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ import java.util.List;
 @RequestMapping(value = "/brand")
 @CrossOrigin
 
-@Api(tags = "品牌操作接口")
+@Api
 public class BrandController {
     @Autowired
     private BrandService brandService;
@@ -115,7 +114,6 @@ public class BrandController {
     /***
      * 查询Brand全部数据
      */
-    @ApiOperation(value = "查询全部品牌")
     @GetMapping
     public Result<List<Brand>> findAll() {
         //调用BrandService实现查询所有Brand

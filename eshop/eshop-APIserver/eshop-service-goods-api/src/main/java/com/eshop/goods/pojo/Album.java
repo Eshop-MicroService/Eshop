@@ -9,6 +9,7 @@ import java.io.Serializable;
 /****
  * @Author:admin
  * @Description:Album构建
+ * @Date 2019/6/14 19:13
  *****/
 @Table(name="tb_album")
 public class Album implements Serializable{
