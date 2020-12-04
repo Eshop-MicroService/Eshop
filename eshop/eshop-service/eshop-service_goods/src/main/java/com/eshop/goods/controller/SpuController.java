@@ -7,6 +7,7 @@ import entity.Result;
 import entity.StatusCode;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/spu")
 @CrossOrigin
-@Api
+@Api(tags = "SPU+SKU保存 ")
 public class SpuController {
 
     @Autowired
@@ -33,6 +34,7 @@ public class SpuController {
      * @param size
      * @return
      */
+    @ApiOperation(value = "Spu分页条件搜索实现")
     @PostMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@RequestBody(required = false)  Spu spu, @PathVariable  int page, @PathVariable  int size){
         //调用SpuService实现分页条件查询Spu
@@ -46,6 +48,8 @@ public class SpuController {
      * @param size:每页显示多少条
      * @return
      */
+    @ApiOperation(value = "Spu分页搜索实现")
+
     @GetMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@PathVariable  int page, @PathVariable  int size){
         //调用SpuService实现分页查询Spu
@@ -58,6 +62,8 @@ public class SpuController {
      * @param spu
      * @return
      */
+    @ApiOperation(value = "多条件搜索品牌数据")
+
     @PostMapping(value = "/search" )
     public Result<List<Spu>> findList(@RequestBody(required = false)  Spu spu){
         //调用SpuService实现条件查询Spu
@@ -70,6 +76,8 @@ public class SpuController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID删除品牌数据")
+
     @DeleteMapping(value = "/{id}" )
     public Result delete(@PathVariable Long id){
         //调用SpuService实现根据主键删除
@@ -83,6 +91,8 @@ public class SpuController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "修改Spu数据")
+
     @PutMapping(value="/{id}")
     public Result update(@RequestBody  Spu spu,@PathVariable Long id){
         //设置主键值
@@ -97,6 +107,8 @@ public class SpuController {
      * @param spu
      * @return
      */
+    @ApiOperation(value = "新增Spu数据")
+
     @PostMapping
     public Result add(@RequestBody   Spu spu){
         //调用SpuService实现添加Spu
@@ -109,6 +121,8 @@ public class SpuController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID查询Spu数据")
+
     @GetMapping("/{id}")
     public Result<Spu> findById(@PathVariable Long id){
         //调用SpuService实现根据主键查询Spu
@@ -120,6 +134,8 @@ public class SpuController {
      * 查询Spu全部数据
      * @return
      */
+    @ApiOperation(value = "查询Spu全部数据")
+
     @GetMapping
     public Result<List<Spu>> findAll(){
         //调用SpuService实现查询所有Spu
@@ -130,12 +146,15 @@ public class SpuController {
     /**
      * Goods(SPU+SKU)增加方法详情
      */
+    @ApiOperation(value = "Goods增加方法")
+
     @PostMapping("/save")
     public Result save(@RequestBody Goods goods){
         spuService.saveGoods(goods);
         return new Result(true,StatusCode.OK,"保存商品成功",null);
     }
 
+    @ApiOperation(value = "查询goods数据")
     //根据点击到的商品(SPU)的ID 获取到GOODS数据返回给页面展示
     @GetMapping("/goods/{id}")
     public Result<Goods> findGoodsById(@PathVariable(value="id") Long id){

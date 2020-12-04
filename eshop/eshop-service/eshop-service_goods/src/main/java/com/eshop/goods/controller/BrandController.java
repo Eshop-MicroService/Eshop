@@ -24,13 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/brand")
 @CrossOrigin
 
-@Api
+@Api(tags = "查询分类品牌数据")
 public class BrandController {
     @Autowired
     private BrandService brandService;
@@ -39,6 +38,7 @@ public class BrandController {
     /***
      * Brand分页条件搜索实现
      */
+    @ApiOperation(value = "Brand分页条件搜索实现")
     @PostMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@RequestBody(required = false) Brand brand, @PathVariable int page, @PathVariable int size) {
         //调用BrandService实现分页条件查询Brand
@@ -52,6 +52,7 @@ public class BrandController {
      * @param size:每页显示多少条
      * @return
      */
+    @ApiOperation(value = "Brand分页搜索实现")
     @GetMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@PathVariable int page, @PathVariable int size) {
         //调用BrandService实现分页查询Brand
@@ -62,6 +63,7 @@ public class BrandController {
     /***
      * 多条件搜索品牌数据
      */
+    @ApiOperation(value = "多条件搜索品牌数据")
     @PostMapping(value = "/search")
     public Result<List<Brand>> findList(@RequestBody(required = false) Brand brand) {
         //调用BrandService实现条件查询Brand
@@ -72,6 +74,7 @@ public class BrandController {
     /***
      * 根据ID删除品牌数据
      */
+    @ApiOperation(value = "根据ID删除品牌数据")
     @DeleteMapping(value = "/delete/{id}")
     public Result delete(@PathVariable Integer id) {
         //调用BrandService实现根据主键删除
@@ -82,6 +85,7 @@ public class BrandController {
     /***
      * 修改Brand数据
      */
+    @ApiOperation(value = "修改Brand数据")
     @PutMapping(value = "/put/{id}")
     public Result update(@RequestBody Brand brand, @PathVariable Integer id) {
         //设置主键值
@@ -94,6 +98,7 @@ public class BrandController {
     /***
      * 新增Brand数据
      */
+    @ApiOperation(value = "新增Brand数据")
     @PostMapping("/add")
     public Result add(@RequestBody   Brand brand){
         //调用BrandService实现添加Brand
@@ -104,6 +109,7 @@ public class BrandController {
     /***
      * 根据ID查询Brand数据
      */
+    @ApiOperation(value = "根据ID查询Brand数据")
     @GetMapping("/{id}")
     public Result<Brand> findById(@PathVariable Integer id) {
         //调用BrandService实现根据主键查询Brand
@@ -114,6 +120,7 @@ public class BrandController {
     /***
      * 查询Brand全部数据
      */
+    @ApiOperation(value = "查询Brand全部数据")
     @GetMapping
     public Result<List<Brand>> findAll() {
         //调用BrandService实现查询所有Brand
@@ -125,10 +132,10 @@ public class BrandController {
     /**
      * @return
      */
+    @ApiOperation(value = "查询品牌列表")
     @GetMapping("/category/{id}")
     public Result<List<Brand>> findBrandByCategory(@PathVariable(name = "id") Integer id) {
         List<Brand> brandList = brandService.findByCategory(id);
-
         return new Result<List<Brand>>(true, StatusCode.OK, "查询品牌列表成功", brandList);
 
     }

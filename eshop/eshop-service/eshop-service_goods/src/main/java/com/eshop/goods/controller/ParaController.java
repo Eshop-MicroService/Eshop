@@ -6,6 +6,8 @@ import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.ResultType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/para")
 @CrossOrigin
+@Api(tags = "参数列表查询")
 public class ParaController {
 
     @Autowired
@@ -33,6 +36,7 @@ public class ParaController {
      * @param size
      * @return
      */
+    @ApiOperation(value = "Para分页条件搜索实现")
     @PostMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@RequestBody(required = false) Para para, @PathVariable int page, @PathVariable int size) {
         //调用ParaService实现分页条件查询Para
@@ -46,6 +50,8 @@ public class ParaController {
      * @param size:每页显示多少条
      * @return
      */
+    @ApiOperation(value = "Para分页搜索实现")
+
     @GetMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@PathVariable int page, @PathVariable int size) {
         //调用ParaService实现分页查询Para
@@ -58,6 +64,8 @@ public class ParaController {
      * @param para
      * @return
      */
+    @ApiOperation(value = "多条件搜索品牌数据")
+
     @PostMapping(value = "/search")
     public Result<List<Para>> findList(@RequestBody(required = false) Para para) {
         //调用ParaService实现条件查询Para
@@ -70,6 +78,8 @@ public class ParaController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID删除品牌数据")
+
     @DeleteMapping(value = "/{id}")
     public Result delete(@PathVariable Integer id) {
         //调用ParaService实现根据主键删除
@@ -83,6 +93,8 @@ public class ParaController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "修改Para数据")
+
     @PutMapping(value = "/{id}")
     public Result update(@RequestBody Para para, @PathVariable Integer id) {
         //设置主键值
@@ -97,6 +109,8 @@ public class ParaController {
      * @param para
      * @return
      */
+    @ApiOperation(value = "新增Para数据")
+
     @PostMapping
     public Result add(@RequestBody Para para) {
         //调用ParaService实现添加Para
@@ -109,6 +123,8 @@ public class ParaController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID查询Para数据")
+
     @GetMapping("/{id}")
     public Result<Para> findById(@PathVariable Integer id) {
         //调用ParaService实现根据主键查询Para
@@ -120,6 +136,8 @@ public class ParaController {
      * 查询Para全部数据
      * @return
      */
+    @ApiOperation(value = "查询Para全部数据")
+
     @GetMapping
     public Result<List<Para>> findAll() {
         //调用ParaService实现查询所有Para
@@ -133,6 +151,8 @@ public class ParaController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "参数列表查询")
+
     @GetMapping("/category/{id}")
     public Result<List<Para>> findParaByCateogryId(@PathVariable(name = "id") Integer id) {
         List<Para> paraList = paraService.findParaByCateogryId(id);

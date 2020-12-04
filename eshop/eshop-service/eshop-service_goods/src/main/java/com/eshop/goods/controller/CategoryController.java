@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/category")
 @CrossOrigin
+@Api(tags = "分类查询")
 public class CategoryController {
 
     @Autowired
@@ -31,6 +34,7 @@ public class CategoryController {
      * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
+    @ApiOperation(value = "分页条件查询")
     public Result<PageInfo> findPage(@RequestBody(required = false)  Category category, @PathVariable  int page, @PathVariable  int size){
         //调用CategoryService实现分页条件查询Category
         PageInfo<Category> pageInfo = categoryService.findPage(category, page, size);
@@ -43,6 +47,7 @@ public class CategoryController {
      * @param size:每页显示多少条
      * @return
      */
+    @ApiOperation(value = "分页搜索")
     @GetMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@PathVariable  int page, @PathVariable  int size){
         //调用CategoryService实现分页查询Category
@@ -55,6 +60,7 @@ public class CategoryController {
      * @param category
      * @return
      */
+    @ApiOperation(value = "多条件搜索品牌数据")
     @PostMapping(value = "/search" )
     public Result<List<Category>> findList(@RequestBody(required = false)  Category category){
         //调用CategoryService实现条件查询Category
@@ -67,6 +73,7 @@ public class CategoryController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID删除品牌数据")
     @DeleteMapping(value = "/{id}" )
     public Result delete(@PathVariable Integer id){
         //调用CategoryService实现根据主键删除
@@ -80,6 +87,7 @@ public class CategoryController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "修改Category数据")
     @PutMapping(value="/{id}")
     public Result update(@RequestBody  Category category,@PathVariable Integer id){
         //设置主键值
@@ -94,6 +102,7 @@ public class CategoryController {
      * @param category
      * @return
      */
+    @ApiOperation(value = "新增Category数据")
     @PostMapping
     public Result add(@RequestBody   Category category){
         //调用CategoryService实现添加Category
@@ -106,6 +115,7 @@ public class CategoryController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID查询Category数据")
     @GetMapping("/{id}")
     public Result<Category> findById(@PathVariable Integer id){
         //调用CategoryService实现根据主键查询Category
@@ -117,6 +127,7 @@ public class CategoryController {
      * 查询Category全部数据
      * @return
      */
+    @ApiOperation(value = "查询Category全部数据")
     @GetMapping
     public Result<List<Category>> findAll(){
         //调用CategoryService实现查询所有Category
@@ -129,6 +140,7 @@ public class CategoryController {
      * @param pid
      * @return
      */
+    @ApiOperation(value = "根据父ID查询该分类下的所有的子分类列表")
     @GetMapping("/list/{pid}")
     public Result<List<Category>> findByParentId(@PathVariable(name="pid") Integer pid){
         //SELECT * from tb_category where parent_id=0

@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/spec")
 @CrossOrigin
+@Api(tags = "规格查询")
 public class SpecController {
 
     @Autowired
@@ -30,6 +33,7 @@ public class SpecController {
      * @param size
      * @return
      */
+    @ApiOperation(value = "Spec分页条件搜索实现")
     @PostMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@RequestBody(required = false)  Spec spec, @PathVariable  int page, @PathVariable  int size){
         //调用SpecService实现分页条件查询Spec
@@ -43,6 +47,7 @@ public class SpecController {
      * @param size:每页显示多少条
      * @return
      */
+    @ApiOperation(value = "Spec分页搜索实现")
     @GetMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@PathVariable  int page, @PathVariable  int size){
         //调用SpecService实现分页查询Spec
@@ -55,6 +60,7 @@ public class SpecController {
      * @param spec
      * @return
      */
+    @ApiOperation(value = "多条件搜索品牌数据")
     @PostMapping(value = "/search" )
     public Result<List<Spec>> findList(@RequestBody(required = false)  Spec spec){
         //调用SpecService实现条件查询Spec
@@ -67,6 +73,7 @@ public class SpecController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID删除品牌数据")
     @DeleteMapping(value = "/{id}" )
     public Result delete(@PathVariable Integer id){
         //调用SpecService实现根据主键删除
@@ -80,6 +87,7 @@ public class SpecController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "修改Spec数据")
     @PutMapping(value="/{id}")
     public Result update(@RequestBody  Spec spec,@PathVariable Integer id){
         //设置主键值
@@ -94,6 +102,7 @@ public class SpecController {
      * @param spec
      * @return
      */
+    @ApiOperation(value = "新增Spec数据")
     @PostMapping
     public Result add(@RequestBody   Spec spec){
         //调用SpecService实现添加Spec
@@ -106,6 +115,7 @@ public class SpecController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "根据ID查询Spec数据")
     @GetMapping("/{id}")
     public Result<Spec> findById(@PathVariable Integer id){
         //调用SpecService实现根据主键查询Spec
@@ -117,6 +127,7 @@ public class SpecController {
      * 查询Spec全部数据
      * @return
      */
+    @ApiOperation(value = "查询Spec全部数据")
     @GetMapping
     public Result<List<Spec>> findAll(){
         //调用SpecService实现查询所有Spec
@@ -130,7 +141,7 @@ public class SpecController {
      *
      */
 
-
+    @ApiOperation(value = "查询规格的列表")
     @GetMapping("/category/{id}")
     public Result<List<Spec>> findByCategoryId(@PathVariable(name="id") Integer id){
         List<Spec> specList = specService.findByCategoryId(id);
