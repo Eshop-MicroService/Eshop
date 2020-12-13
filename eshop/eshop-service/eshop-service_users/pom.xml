@@ -10,6 +10,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>eshop-service_users</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.microservice</groupId>
+            <artifactId>eshop-service-user-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--oAuth2.0认证-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.10.RELEASE</version>
+        </dependency>
+
+    </dependencies>
 
 
 </project>

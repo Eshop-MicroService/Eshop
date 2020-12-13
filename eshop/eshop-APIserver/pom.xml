@@ -16,6 +16,7 @@
     </description>
     <modules>
         <module>eshop-service-goods-api</module>
+        <module>eshop-service-user-api</module>
     </modules>
 
     <dependencies>

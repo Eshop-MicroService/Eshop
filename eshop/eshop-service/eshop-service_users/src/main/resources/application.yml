@@ -1,0 +1,31 @@
+server:
+  port: 18087
+spring:
+  application:
+    name: user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1c83y7r29088yj6go.mysql.rds.aliyuncs.com:3306/users_service?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 12345678
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.eshop.user.pojo
+logback:
+  #非开发环境是否开启控制台日志
+  enableConsoleLogWhenNotInDev: false
+  #**日志文件存放目录，目录后面无需再加"/"。备注如果这项不配置，则不输出日志文件
+  logFileDir: /acc-Log
+
+

@@ -1,0 +1,44 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: user-auth
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1c83y7r29088yj6go.mysql.rds.aliyuncs.com:3306/users_service?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 12345678
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.eshop.user.pojo
+auth:
+  ttl: 3600  #token存储到redis的过期时间
+  clientId: eshop
+  clientSecret: eshop
+  cookieDomain: localhost
+  cookieMaxAge: -1
+encrypt:
+  key-store:
+    location: classpath:/eshop.jks
+    secret: eshopjks
+    alias: eshop
+    password: eshopjks
