@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,9 +72,22 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
         //所有请求必须认证通过
         http.authorizeRequests()
                 //下边的路径放行
-        .antMatchers("/user/add","/user/load/*").//配置地址放行（哪些地址不用登陆：注册地址）
+        .antMatchers("/user/add","/user/load/*","/userlogin",
+                "/v2/api-docs",
+                "/swagger-resources/configuration/ui",
+                "/swagger-resources",
+                "/swagger-resources/configuration/security",
+                "/swagger-ui.html",
+                "/css/**",
+                "/js/**",
+                "/images/**",
+                "/webjars/**",
+                "/import/test",
+                "**/favicon.ico",
+                "/index").//配置地址放行（哪些地址不用登陆：注册地址）
                 permitAll()
                 .anyRequest().
                 authenticated();//其他地址需要认证授权
     }
+
 }
