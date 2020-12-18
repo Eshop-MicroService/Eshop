@@ -67,7 +67,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         //数据库加载查询用户信息
-        Result<com.eshop.user.pojo.User> userResult = userFeign.findById(username);
+        //Result<com.eshop.user.pojo.User> userResult = userFeign.findById(username);
 
         //客户端id ：eshop
         //客户端密钥 ： eshop
@@ -78,11 +78,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //            return null;
 //        }
         //根据用户名查询用户信息
-        //String pwd = new BCryptPasswordEncoder().encode("12345678");
+        String pwd = new BCryptPasswordEncoder().encode("12345678");
 
 
 
-        String pwd = userResult.getData().getPassword();
+       // String pwd = userResult.getData().getPassword();
         //创建User对象
         String permissions = "user,admin"; //指定用户的角色信息
 

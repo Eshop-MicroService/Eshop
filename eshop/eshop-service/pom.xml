@@ -25,6 +25,11 @@
     <dependencies>
         <dependency>
             <groupId>com.microservice</groupId>
+            <artifactId>eshop-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microservice</groupId>
             <artifactId>eshop-common_db</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
