@@ -43,6 +43,12 @@ spring:
               - Path=/address/**,/areas/**,/cities/**,/provinces/**,/user/**
 #              fliters:
 #              - StripPrefix=1
+            #用户微服务
+            - id: eshop_order_route
+              uri: http://localhost:18088
+              predicates:
+              - Path=/cart/**,/categoryReport/**,/orderConfig/**,/order/**,/orderItem/**,/orderLog/**,/preferential/**,/returnCause/**,/returnOrder/**,/returnOrderItem/**,/task/**,/taskHis/**,/undolog/**
+
 server:
   port: 8001
 eureka:
